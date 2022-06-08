@@ -26,7 +26,7 @@
       compile-commands--include-system-regexp " -isystem \\([[:alnum:]:.\\/_-]*\\)"
       compile-commands--external-include-regexp " -external:I\\([[:alnum:]:.\\/_-]*\\)")
 
-(defun compile-commands--parse-includes (command)
+(defun compile-commands--parse-include-directories (command)
   (append (compile-commands--re-match compile-commands--include-regexp command)
           (compile-commands--re-match compile-commands--include-system-regexp command)
           (compile-commands--re-match compile-commands--external-include-regexp command)))
@@ -36,10 +36,10 @@
     (maphash (lambda (k v) (push k ret)) hash-table)
     ret))
 
-(defun compile-commands-get-includes ()
+(defun compile-commands-get-include-directories ()
   (let ((table (make-hash-table :test 'equal :weakness nil)))
     (dolist (command (compile-commands--parse-commands))
-      (dolist (include (compile-commands--parse-includes command))
+      (dolist (include (compile-commands--parse-include-directories command))
         (puthash include nil table)))
     (compile-commands--keys table)))
 
