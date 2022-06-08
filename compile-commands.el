@@ -1,5 +1,9 @@
 (defvar-local compile-commands-filename "compile_commands.json")
 
+(defvar compile-commands--include-regexp          " -I\\([[:alnum:]:.\\/_-]*\\)")
+(defvar compile-commands--include-system-regexp   " -isystem \\([[:alnum:]:.\\/_-]*\\)")
+(defvar compile-commands--external-include-regexp " -external:I\\([[:alnum:]:.\\/_-]*\\)")
+
 (defun compile-commands--parse-json ()
   (with-temp-buffer
     (let* ((project-dir (project-root (project-current t)))
@@ -21,10 +25,6 @@
         (push (match-string 1 string) ret)
         (setq pos (match-end 1)))
       ret)))
-
-(setq compile-commands--include-regexp " -I\\([[:alnum:]:.\\/_-]*\\)"
-      compile-commands--include-system-regexp " -isystem \\([[:alnum:]:.\\/_-]*\\)"
-      compile-commands--external-include-regexp " -external:I\\([[:alnum:]:.\\/_-]*\\)")
 
 (defun compile-commands--parse-include-directories (command)
   (append (compile-commands--re-match compile-commands--include-regexp command)
