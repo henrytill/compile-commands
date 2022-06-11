@@ -1,3 +1,5 @@
+(require 'project)
+
 (defvar-local compile-commands-filename "compile_commands.json")
 
 (defvar compile-commands--include-regexp          " -I\\([[:alnum:]:.\\/_-]*\\)")
