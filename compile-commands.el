@@ -1,3 +1,4 @@
+(require 'json)
 (require 'project)
 
 (defvar-local compile-commands-filename "compile_commands.json")
@@ -7,11 +8,10 @@
 (defvar compile-commands--external-include-regexp " -external:I\\([[:alnum:]:.\\/_-]*\\)")
 
 (defun compile-commands--parse-json ()
-  (with-temp-buffer
-    (let* ((project-dir (project-root (project-current t)))
-           (file (expand-file-name compile-commands-filename project-dir)))
-      (insert-file-contents file)
-      (json-parse-buffer))))
+  (let* ((project-dir (project-root (project-current t)))
+         (file (expand-file-name compile-commands-filename project-dir))
+         (json-object-type 'hash-table))
+    (json-read-file file)))
 
 (defun compile-commands--parse-commands ()
   (let ((json (compile-commands--parse-json))
