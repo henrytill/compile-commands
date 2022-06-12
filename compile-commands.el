@@ -34,8 +34,9 @@
           (compile-commands--re-match compile-commands--external-include-regexp command)))
 
 (defun compile-commands--keys (hash-table)
-  (let ((ret nil))
-    (maphash (lambda (k v) (push k ret)) hash-table)
+  (let* ((ret nil)
+         (f (lambda (k v) (push k ret))))
+    (maphash f hash-table)
     ret))
 
 (defun compile-commands-get-include-directories ()
