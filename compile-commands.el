@@ -8,7 +8,7 @@
 (defvar compile-commands--external-include-regexp " -external:I\\([[:alnum:]:.\\/_-]*\\)")
 
 (defun compile-commands--parse-json ()
-  (let* ((project-dir (project-root (project-current t)))
+  (let* ((project-dir (when (fboundp 'project-root) (project-root (project-current t))))
          (file (expand-file-name compile-commands-filename project-dir))
          (json-object-type 'hash-table))
     (json-read-file file)))
