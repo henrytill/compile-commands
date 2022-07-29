@@ -1,0 +1,10 @@
+image: debian/stable
+packages:
+  - emacs-nox
+  - make
+sources:
+  - https://git.sr.ht/~henrytill/compile-commands
+tasks:
+  - build: |
+      cd compile-commands
+      make
