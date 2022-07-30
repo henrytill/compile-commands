@@ -23,7 +23,7 @@
 
 ;;; Commentary:
 
-;;
+;; This package provides functions for getting information from JSON Compilation Database Files.
 
 ;;; Code:
 
