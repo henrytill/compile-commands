@@ -3,6 +3,7 @@
 ;; Copyright (C) 2022  Henry Till
 
 ;; Author: Henry Till <henrytill@gmail.com>
+;; Package-Requires: ((emacs "26.3"))
 ;; Keywords: c, convenience, languages
 ;; URL: https://git.sr.ht/~henrytill/compile-commands
 
