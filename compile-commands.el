@@ -4,6 +4,7 @@
 
 ;; Author: Henry Till <henrytill@gmail.com>
 ;; Keywords: c, convenience, languages
+;; URL: https://git.sr.ht/~henrytill/compile-commands
 
 
 ;; This program is free software; you can redistribute it and/or modify
