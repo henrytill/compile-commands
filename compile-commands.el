@@ -64,7 +64,7 @@
 
 (defun compile-commands--keys (hash-table)
   (let* ((ret nil)
-         (f (lambda (k v) (push k ret))))
+         (f (lambda (k _) (push k ret))))
     (maphash f hash-table)
     ret))
 
